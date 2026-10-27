@@ -1,0 +1,159 @@
+#usda 1.0
+(
+    defaultPrim = "robot"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "robot" (
+    prepend apiSchemas = ["IsaacRobotAPI"]
+    displayName = "Main Assembly"
+)
+{
+    string isaac:description
+    string isaac:namespace
+    prepend rel isaac:physics:robotJoints = [</robot/joints/_MbCKjzIaO8aWP4xvt>, </robot/joints/_MYFeX8KJGZaehtCsE>, </robot/joints/_M_ustyoKCzuh8dXBk>, </robot/joints/_MkAn46zw_yH35OXox>]
+    prepend rel isaac:physics:robotLinks = [</robot/links/_MSDcq3wvBIfc42pCk>]
+    bool physxArticulation:enabledSelfCollisions = 0
+    quatd xformOp:orient = (1, 0, 0, 0)
+    double3 xformOp:scale = (1, 1, 1)
+    double3 xformOp:translate = (0, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    def Scope "joints"
+    {
+        def PhysicsFixedJoint "_MbCKjzIaO8aWP4xvt" (
+            prepend apiSchemas = ["PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            displayName = "Fastened 1"
+        )
+        {
+            rel physics:body0 = </robot/links/_MgNuja3r8pGIe_k2S>
+            point3f physics:localPos0 = (0.0135, 0.03, 0.068)
+            quatf physics:localRot0 = (0.70710677, -0.70710677, -0, -0)
+            rel physics:body1 = </robot/links/_MLCSoh7Z7efrRtEb7>
+            point3f physics:localPos1 = (0.0135, 0.002, -0.068)
+            quatf physics:localRot1 = (0.70710677, 0.70710677, -0, -0)
+            bool physxArticulation:enabledSelfCollisions = 0
+        }
+
+        def PhysicsFixedJoint "_MYFeX8KJGZaehtCsE" (
+            prepend apiSchemas = ["PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            displayName = "Fastened 2"
+        )
+        {
+            rel physics:body0 = </robot/links/_MLCSoh7Z7efrRtEb7>
+            point3f physics:localPos0 = (0, 3.1344285e-16, 0)
+            quatf physics:localRot0 = (0.70710677, 0.70710677, -0, 0)
+            rel physics:body1 = </robot/links/_MAMiBls_5Dt_ck3NP>
+            point3f physics:localPos1 = (0.092, 0, 0)
+            quatf physics:localRot1 = (0.70710677, -0, -0, 0.70710677)
+            bool physxArticulation:enabledSelfCollisions = 0
+        }
+
+        def PhysicsFixedJoint "_M_ustyoKCzuh8dXBk" (
+            prepend apiSchemas = ["PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            displayName = "Fastened 3"
+        )
+        {
+            rel physics:body0 = </robot/links/_Mud6IxQksMM3dDWNT>
+            point3f physics:localPos0 = (0, 0, 0.089)
+            quatf physics:localRot0 = (1, 0, -0, -0)
+            rel physics:body1 = </robot/links/_MLCSoh7Z7efrRtEb7>
+            point3f physics:localPos1 = (0, 0, 0.125)
+            quatf physics:localRot1 = (0.70710677, 0, -0, 0.70710677)
+            bool physxArticulation:enabledSelfCollisions = 0
+        }
+
+        def PhysicsFixedJoint "_MkAn46zw_yH35OXox" (
+            prepend apiSchemas = ["PhysicsArticulationRootAPI", "PhysxArticulationAPI"]
+            displayName = "Fastened 4"
+        )
+        {
+            rel physics:body0 = </robot/links/_MSDcq3wvBIfc42pCk>
+            point3f physics:localPos0 = (0.02, 0.065, 0)
+            quatf physics:localRot0 = (-0, -1, -0, -0)
+            rel physics:body1 = </robot/links/_MgNuja3r8pGIe_k2S>
+            point3f physics:localPos1 = (-1.2299114e-18, 0.002, -1.9186618e-16)
+            quatf physics:localRot1 = (0.70710677, 0.70710677, -0, -0)
+            bool physxArticulation:enabledSelfCollisions = 0
+        }
+    }
+
+    def Scope "links"
+    {
+        def Xform "_MSDcq3wvBIfc42pCk" (
+            prepend apiSchemas = ["PhysicsRigidBodyAPI", "IsaacLinkAPI", "PhysicsMassAPI"]
+            displayName = "Battery <1>"
+        )
+        {
+            string isaac:nameOverride
+            quatf physics:principalAxes = (0.48938867, 0.5102904, -0.5103766, -0.48950812)
+            float3 physics:diagonalInertia = (0.0001449816, 0.0008498833, 0.00085001613)
+            float physics:mass = 0.5599915
+            point3f physics:centerOfMass = (0.019984577, 0.065009855, 0.019997824)
+            matrix4d xformOp:transform = ((1, -1.2246467991473525e-16, 2.449293598294706e-16, 0), (1.224646799147353e-16, 1, -1.2246467991473525e-16, 0), (-2.449293598294706e-16, 1.224646799147353e-16, 1, 0), (-0.020010000000000017, -0.06499999999999954, 0.11251453171528, 1))
+            uniform token[] xformOpOrder = ["xformOp:transform"]
+
+            def Xform "visuals" (
+            )
+            {
+                def Xform "___meshes__MSDcq3wvBIfc42pCk_gltf" (
+                    references = [@./meshes/_MSDcq3wvBIfc42pCk.gltf@]
+                )
+                {
+                    float3 xformOp:rotateXYZ = (0, 0, 0)
+                    double3 xformOp:scale = (1, 1, 1)
+                    double3 xformOp:translate = (0, 0, 0)
+                    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                }
+            }
+
+            def Xform "collisions"
+            {
+                def Xform "___meshes__MSDcq3wvBIfc42pCk_gltf" (
+                    prepend apiSchemas = ["PhysicsCollisionAPI", "PhysxCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxSDFMeshCollisionAPI"]
+                    displayName = "collider: ./meshes/_MSDcq3wvBIfc42pCk.gltf"
+                )
+                {
+                    uniform token physics:approximation = "sdf"
+
+                    def Xform "___meshes__MSDcq3wvBIfc42pCk_gltf" (
+                        references = [@./meshes/_MSDcq3wvBIfc42pCk.gltf@]
+                    )
+                    {
+                        float3 xformOp:rotateXYZ = (0, 0, 0)
+                        double3 xformOp:scale = (1, 1, 1)
+                        double3 xformOp:translate = (0, 0, 0)
+                        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:rotateXYZ", "xformOp:scale"]
+                    }
+                }
+            }
+        }
+    }
+}
+
+def Scope "visuals"
+{
+    token visibility = "invisible"
+}
+
+def Scope "colliders"
+{
+    token visibility = "invisible"
+
+    def PhysicsCollisionGroup "robotCollisionGroup"
+    {
+        prepend rel collection:colliders:includes = [</robot>]
+    }
+
+    def PhysicsCollisionGroup "collidersCollisionGroup"
+    {
+        prepend rel collection:colliders:includes = [</colliders>]
+        prepend rel physics:filteredGroups = [</colliders/robotCollisionGroup>]
+    }
+}
+
+def Scope "meshes"
+{
+    token visibility = "invisible"
+}
